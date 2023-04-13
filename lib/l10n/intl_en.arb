@@ -1,3 +1,6 @@
 {
-    "title":"zkweather"
+    "title":"zkweather",
+    "home":"home",
+    "message":"message",
+    "person":"person"
 }

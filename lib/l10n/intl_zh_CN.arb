@@ -1,3 +1,6 @@
 {
-    "title":"zk天气"
+    "title":"zk天气",
+    "home":"主页",
+    "message":"信息",
+    "person":"我的"
 }
