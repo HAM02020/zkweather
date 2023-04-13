@@ -25,7 +25,8 @@ class ZKNetworkManager extends DioForNative {
     interceptors.add(ZKInterceptor());
   }
 
-  doGet<T>(url, {queryParameters, options, cancelToken, onReceiveProgress}) {
+  Future<Response<T>> doGet<T>(url,
+      {queryParameters, options, cancelToken, onReceiveProgress}) {
     return get<T>(
       url,
       queryParameters: queryParameters,

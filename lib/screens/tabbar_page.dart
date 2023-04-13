@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zk_weather/generated/l10n.dart';
-import 'package:zk_weather/screens/home/home_page.dart';
-import 'package:zk_weather/screens/second/message_page.dart';
-import 'package:zk_weather/screens/third/person_page.dart';
+import 'package:zk_weather/providers/city_now_weather_notifier.dart';
+import 'package:zk_weather/screens/weather/citys_screen.dart';
 import 'package:zk_weather/utils/network/api.dart';
 
 class TapBarPage extends StatefulWidget {
@@ -25,25 +25,25 @@ class _TapBarPageState extends State<TapBarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.tabItemConf[_index]["label"] as String? ?? ""),
-      ),
-      body: IndexedStack(
-        index: _index,
-        children: const [
-          Homepage(),
-          MessagePage(),
-          PersonPage(),
-        ],
-      ),
-      bottomNavigationBar: navigationBar(),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.telegram),
-        onPressed: () async {
-          var data = await Api.cityWeather();
-          print(data["weather"]);
-        },
-      ),
+        appBar: AppBar(
+          title: Text(widget.tabItemConf[_index]["label"] as String? ?? ""),
+        ),
+        body: IndexedStack(
+          index: _index,
+          children: [
+            CitysScreen(),
+            Center(child: Text(S.current.message),),
+            Center(child: Text(S.current.person),),
+          ],
+        ),
+        bottomNavigationBar: navigationBar(),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.telegram),
+          onPressed: () async {
+            Provider.of<CityNowWeatherNotifier>(context,listen: false).loadShanghaiDataFromApi();
+          },
+        ),
+      
     );
   }
 

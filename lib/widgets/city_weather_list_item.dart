@@ -1,9 +1,11 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:zk_weather/common/zk_theme.dart';
+import 'package:zk_weather/model/weather_now_model.dart';
 
 class CityWeatherListItem extends StatelessWidget {
-  const CityWeatherListItem({super.key});
+  CityWeatherListItem({super.key, required this.model});
+  WeatherNowModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class CityWeatherListItem extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '16°',
+                  '${model.main.temp}°',
                   style: ZKAppTheme.largeTextStyle.copyWith(fontSize: 40),
                 ),
               ],
@@ -45,13 +47,13 @@ class CityWeatherListItem extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Text(
-                  '多云',
+                  model.weather[0].description,
                   style: ZKAppTheme.smallTextStyle,
                 ),
                 Text(
-                  '最高16° 最低10°',
+                  '最高${model.main.tempMax}° 最低${model.main.tempMin}°',
                   style: ZKAppTheme.smallTextStyle,
                 )
               ],
