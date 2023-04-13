@@ -89,6 +89,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Beijing`
+  String get beijing {
+    return Intl.message(
+      'Beijing',
+      name: 'beijing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shanghai`
+  String get shanghai {
+    return Intl.message(
+      'Shanghai',
+      name: 'shanghai',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dalian`
+  String get dalian {
+    return Intl.message(
+      'Dalian',
+      name: 'dalian',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -2,5 +2,8 @@
     "title":"zk天气",
     "home":"主页",
     "message":"信息",
-    "person":"我的"
+    "person":"我的",
+    "beijing":"北京",
+    "shanghai":"上海",
+    "dalian":"大连"
 }

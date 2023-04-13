@@ -13,7 +13,11 @@ class ZKAppTheme {
   static const Color lightBackgroundColor = Colors.white;
   static const Color dartBackgroundColor = Colors.black;
 
+  static const TextStyle smallTextStyle = TextStyle(fontSize: smallFontSize);
+  static const TextStyle largeTextStyle = TextStyle(fontSize: largeFontsize);
+
   static final ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
     scaffoldBackgroundColor: lightBackgroundColor,
     primarySwatch: primarySwatch.toMaterialColor(),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -33,16 +37,13 @@ class ZKAppTheme {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: dartBackgroundColor,
+    brightness: Brightness.dark,
+    //scaffoldBackgroundColor: dartBackgroundColor,
     primarySwatch: primarySwatch.toMaterialColor(),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: dartBackgroundColor,
-      //selectedIconTheme: IconThemeData(color: primarySwatch),
-      //unselectedIconTheme: IconThemeData(color: dartTextColor),
+      //backgroundColor: dartBackgroundColor,
       unselectedItemColor: dartTextColor,
       selectedItemColor: primarySwatch,
-      //unselectedLabelStyle: TextStyle(fontSize: 30)
-      //selectedLabelStyle: TextStyle(color: primarySwatch),//无作用
     ),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(fontSize: normalFontsize, color: dartTextColor),

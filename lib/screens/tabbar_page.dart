@@ -3,6 +3,7 @@ import 'package:zk_weather/generated/l10n.dart';
 import 'package:zk_weather/screens/home/home_page.dart';
 import 'package:zk_weather/screens/second/message_page.dart';
 import 'package:zk_weather/screens/third/person_page.dart';
+import 'package:zk_weather/utils/network/api.dart';
 
 class TapBarPage extends StatefulWidget {
   TapBarPage({super.key});
@@ -36,6 +37,13 @@ class _TapBarPageState extends State<TapBarPage> {
         ],
       ),
       bottomNavigationBar: navigationBar(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.telegram),
+        onPressed: () async {
+          var data = await Api.cityWeather();
+          print(data["weather"]);
+        },
+      ),
     );
   }
 

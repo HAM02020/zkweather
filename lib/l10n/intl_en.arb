@@ -2,5 +2,9 @@
     "title":"zkweather",
     "home":"home",
     "message":"message",
-    "person":"person"
+    "person":"person",
+    "beijing":"Beijing",
+    "shanghai":"Shanghai",
+    "dalian":"Dalian"
+
 }
