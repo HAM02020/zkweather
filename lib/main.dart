@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:zk_weather/common/zk_theme.dart';
 import 'package:zk_weather/generated/l10n.dart';
-import 'package:zk_weather/providers/city_now_weather_notifier.dart';
 import 'package:zk_weather/screens/tabbar_page.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => CityNowWeatherNotifier(),
-      child:const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import 'package:zk_weather/generated/l10n.dart';
-import 'package:zk_weather/providers/city_now_weather_notifier.dart';
 import 'package:zk_weather/screens/weather/citys_screen.dart';
-import 'package:zk_weather/utils/network/api.dart';
 
 class TapBarPage extends StatefulWidget {
   TapBarPage({super.key});
@@ -44,8 +42,8 @@ class _TapBarPageState extends State<TapBarPage> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.telegram),
         onPressed: () async {
-          Provider.of<CityNowWeatherNotifier>(context, listen: false)
-              .loadShanghaiDataFromApi();
+          //Provider.of<CityNowWeatherNotifier>(context, listen: false)
+          //.loadShanghaiDataFromApi();
         },
       ),
     );
