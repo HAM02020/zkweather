@@ -1,11 +1,11 @@
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:zk_weather/common/zk_theme.dart';
-import 'package:zk_weather/model/weather_now_model.dart';
+import 'package:zk_weather/generated/l10n.dart';
+import 'package:zk_weather/viewModel/city_list_item_view_model.dart';
 
 class CityWeatherListItem extends StatelessWidget {
-  CityWeatherListItem({super.key, required this.model});
-  WeatherNowModel model;
+  CityWeatherListItem({super.key, required this.viewModel});
+  CityListItemViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -26,34 +26,34 @@ class CityWeatherListItem extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      '北京市',
+                    Text(
+                      '${viewModel.cityName}',
                       style: ZKAppTheme.largeTextStyle,
                     ),
                     Text(
-                      formatDate(DateTime.now(), [HH, ':', nn]),
+                      '${viewModel.areaName}',
                       style: ZKAppTheme.smallTextStyle,
                     ),
                   ],
                 ),
                 Text(
-                  '${model.main.temp}°',
-                  style: ZKAppTheme.largeTextStyle.copyWith(fontSize: 40),
+                  '${viewModel.temp}°',
+                  style: ZKAppTheme.largeTextStyle.copyWith(fontSize: 60),
                 ),
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  model.weather[0].description,
+                  viewModel.description ?? '暂无描述',
                   style: ZKAppTheme.smallTextStyle,
                 ),
                 Text(
-                  '最高${model.main.tempMax}° 最低${model.main.tempMin}°',
+                  '${S.current.high}${viewModel.maxTemp}° ${S.current.low}${viewModel.minTemp}°',
                   style: ZKAppTheme.smallTextStyle,
                 )
               ],

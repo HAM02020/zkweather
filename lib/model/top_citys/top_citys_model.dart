@@ -1,0 +1,30 @@
+import 'top_city.dart';
+
+class TopCitysModel {
+  String? code;
+  List<TopCityModel>? topCityList;
+
+  TopCitysModel({this.code, this.topCityList});
+
+  factory TopCitysModel.fromJson(Map<String, dynamic> json) {
+    return TopCitysModel(
+      code: json['code'] as String?,
+      topCityList: (json['topCityList'] as List<dynamic>?)
+          ?.map((e) => TopCityModel
+              .fromCode200TopCityListNameId101210106Lat3027371Lon11997874Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank25FxLinkHttpsWwwQweatherComWeatherYuhang101210106HtmlNameId101010100Lat3990499Lon11640529Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank10FxLinkHttpsWwwQweatherComWeatherBeijing101010100HtmlNameId101010300Lat3992149Lon11648641Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank15FxLinkHttpsWwwQweatherComWeatherChaoyang101010300HtmlNameId101020500Lat3138352Lon12125034Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank23FxLinkHttpsWwwQweatherComWeatherJiading101020500HtmlNameId101010200Lat3995607Lon11631032Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank15FxLinkHttpsWwwQweatherComWeatherHaidian101010200HtmlReferSourcesQWeatherLicenseQWeatherDevelopersLicense(
+                  e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
+
+  Map<String, dynamic>
+      toCode200TopCityListNameId101210106Lat3027371Lon11997874Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank25FxLinkHttpsWwwQweatherComWeatherYuhang101210106HtmlNameId101010100Lat3990499Lon11640529Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank10FxLinkHttpsWwwQweatherComWeatherBeijing101010100HtmlNameId101010300Lat3992149Lon11648641Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank15FxLinkHttpsWwwQweatherComWeatherChaoyang101010300HtmlNameId101020500Lat3138352Lon12125034Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank23FxLinkHttpsWwwQweatherComWeatherJiading101020500HtmlNameId101010200Lat3995607Lon11631032Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank15FxLinkHttpsWwwQweatherComWeatherHaidian101010200HtmlReferSourcesQWeatherLicenseQWeatherDevelopersLicense() {
+    return {
+      'code': code,
+      'topCityList': topCityList
+          ?.map((e) => e
+              .toCode200TopCityListNameId101210106Lat3027371Lon11997874Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank25FxLinkHttpsWwwQweatherComWeatherYuhang101210106HtmlNameId101010100Lat3990499Lon11640529Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank10FxLinkHttpsWwwQweatherComWeatherBeijing101010100HtmlNameId101010300Lat3992149Lon11648641Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank15FxLinkHttpsWwwQweatherComWeatherChaoyang101010300HtmlNameId101020500Lat3138352Lon12125034Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank23FxLinkHttpsWwwQweatherComWeatherJiading101020500HtmlNameId101010200Lat3995607Lon11631032Adm2Adm1CountryTzAsiaShanghaiUtcOffset0800IsDst0TypeCityRank15FxLinkHttpsWwwQweatherComWeatherHaidian101010200HtmlReferSourcesQWeatherLicenseQWeatherDevelopersLicense())
+          .toList(),
+    };
+  }
+}

@@ -5,6 +5,12 @@
     "person":"person",
     "beijing":"Beijing",
     "shanghai":"Shanghai",
-    "dalian":"Dalian"
+    "dalian":"Dalian",
+    "chongqing":"Chongqing",
+    "hangzhou":"Hangzhou",
+    "guangzhou":"Guangzhou",
+    "word_city":"",
+    "high":"H:",
+    "low":"L:"
 
 }

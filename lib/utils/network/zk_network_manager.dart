@@ -65,12 +65,14 @@ class ZKInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     //添加headers 设置contentType等
     debugPrint(
-        "dioRequest:${options.method} url->${options.baseUrl}${options.queryParameters}");
+        "dioRequest:${options.method} url->${options.uri}${options.queryParameters}");
     return handler.next(options);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
+    debugPrint("dioResponse:${response}");
+
     return handler.resolve(response);
   }
 }

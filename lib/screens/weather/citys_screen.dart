@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zk_weather/bloc/city_weather/city_weather_bloc.dart';
+import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
 import 'package:zk_weather/widgets/city_weather_list_item.dart';
 
 class CitysScreen extends StatelessWidget {
@@ -10,13 +11,14 @@ class CitysScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CityWeatherBloc()..add(CityWeatherLoadEvent()),
+      create: (context) =>
+          CityWeatherBloc(topcityBloc: BlocProvider.of<TopcityBloc>(context)),
       child: BlocBuilder<CityWeatherBloc, CityWeatherState>(
         builder: (context, state) {
           return ListView.builder(
             itemCount: state.list.length,
             itemBuilder: (context, index) => CityWeatherListItem(
-              model: state.list[index],
+              viewModel: state.list[index],
             ),
           );
         },

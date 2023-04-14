@@ -119,6 +119,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Chongqing`
+  String get chongqing {
+    return Intl.message(
+      'Chongqing',
+      name: 'chongqing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hangzhou`
+  String get hangzhou {
+    return Intl.message(
+      'Hangzhou',
+      name: 'hangzhou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guangzhou`
+  String get guangzhou {
+    return Intl.message(
+      'Guangzhou',
+      name: 'guangzhou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get word_city {
+    return Intl.message(
+      '',
+      name: 'word_city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `H:`
+  String get high {
+    return Intl.message(
+      'H:',
+      name: 'high',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `L:`
+  String get low {
+    return Intl.message(
+      'L:',
+      name: 'low',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -2,12 +2,12 @@ part of 'city_weather_bloc.dart';
 
 @immutable
 class CityWeatherState extends Equatable {
-  List<WeatherNowModel> list = [];
+  List<CityListItemViewModel> list = [];
 
   List<Object?> get props => [list];
 }
 
-class CityWeatherInitial extends CityWeatherState {
+class CityWeatherInitialState extends CityWeatherState {
   @override
   List<Object?> get props => throw UnimplementedError();
 }
@@ -19,7 +19,7 @@ class CityWeatherLoadingState extends CityWeatherState {
 
 class CityWeatherLoadingEndState extends CityWeatherState {
   @override
-  late List<WeatherNowModel> list;
+  late List<CityListItemViewModel> list;
 
   CityWeatherLoadingEndState({required this.list});
 

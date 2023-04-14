@@ -23,11 +23,17 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "beijing": MessageLookupByLibrary.simpleMessage("Beijing"),
+        "chongqing": MessageLookupByLibrary.simpleMessage("Chongqing"),
         "dalian": MessageLookupByLibrary.simpleMessage("Dalian"),
+        "guangzhou": MessageLookupByLibrary.simpleMessage("Guangzhou"),
+        "hangzhou": MessageLookupByLibrary.simpleMessage("Hangzhou"),
+        "high": MessageLookupByLibrary.simpleMessage("H:"),
         "home": MessageLookupByLibrary.simpleMessage("home"),
+        "low": MessageLookupByLibrary.simpleMessage("L:"),
         "message": MessageLookupByLibrary.simpleMessage("message"),
         "person": MessageLookupByLibrary.simpleMessage("person"),
         "shanghai": MessageLookupByLibrary.simpleMessage("Shanghai"),
-        "title": MessageLookupByLibrary.simpleMessage("zkweather")
+        "title": MessageLookupByLibrary.simpleMessage("zkweather"),
+        "word_city": MessageLookupByLibrary.simpleMessage("")
       };
 }

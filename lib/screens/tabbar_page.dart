@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
 
 import 'package:zk_weather/generated/l10n.dart';
 import 'package:zk_weather/screens/weather/citys_screen.dart';
@@ -22,29 +24,32 @@ class _TapBarPageState extends State<TapBarPage> {
   // test() async {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.tabItemConf[_index]["label"] as String? ?? ""),
-      ),
-      body: IndexedStack(
-        index: _index,
-        children: [
-          const CitysScreen(),
-          Center(
-            child: Text(S.current.message),
-          ),
-          Center(
-            child: Text(S.current.person),
-          ),
-        ],
-      ),
-      bottomNavigationBar: navigationBar(),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.telegram),
-        onPressed: () async {
-          //Provider.of<CityNowWeatherNotifier>(context, listen: false)
-          //.loadShanghaiDataFromApi();
-        },
+    return BlocProvider(
+      create: (context) => TopcityBloc()..add(TopcityLoadEvent()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.tabItemConf[_index]["label"] as String? ?? ""),
+        ),
+        body: IndexedStack(
+          index: _index,
+          children: [
+            const CitysScreen(),
+            Center(
+              child: Text(S.current.message),
+            ),
+            Center(
+              child: Text(S.current.person),
+            ),
+          ],
+        ),
+        bottomNavigationBar: navigationBar(),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.telegram),
+          onPressed: () async {
+            //Provider.of<CityNowWeatherNotifier>(context, listen: false)
+            //.loadShanghaiDataFromApi();
+          },
+        ),
       ),
     );
   }
