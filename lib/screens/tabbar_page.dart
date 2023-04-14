@@ -41,7 +41,7 @@ class _TapBarPageState extends State<TapBarPage> {
         child: const Icon(Icons.telegram),
         onPressed: () async {
           var data = await Api.cityWeather();
-          print(data["weather"]);
+          print(data.data["weather"]);
         },
       ),
     );
