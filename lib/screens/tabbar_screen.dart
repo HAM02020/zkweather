@@ -5,8 +5,8 @@ import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
 import 'package:zk_weather/generated/l10n.dart';
 import 'package:zk_weather/screens/weather/citys_screen.dart';
 
-class TapBarPage extends StatefulWidget {
-  TapBarPage({super.key});
+class TapBarScreen extends StatefulWidget {
+  TapBarScreen({super.key});
 
   late var tabItemConf = [
     {"icon": Icons.home_outlined, "label": S.current.home},
@@ -15,10 +15,10 @@ class TapBarPage extends StatefulWidget {
   ];
 
   @override
-  State<TapBarPage> createState() => _TapBarPageState();
+  State<TapBarScreen> createState() => _TapBarScreenState();
 }
 
-class _TapBarPageState extends State<TapBarPage> {
+class _TapBarScreenState extends State<TapBarScreen> {
   int _index = 0;
 
   // test() async {
