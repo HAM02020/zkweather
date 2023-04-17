@@ -32,4 +32,24 @@ class Api {
     });
     return response.data;
   }
+
+  static Future<dynamic> weatherDetail(location) async {
+    var response = await ZKNetworkManager()
+        .doGet('$qweatherBaseUrl/v7/weather/now', queryParameters: {
+      "key": qweather_apikey,
+      "location": location,
+      "lang": Intl.getCurrentLocale().substring(0, 2),
+    });
+    return response.data;
+  }
+
+  static Future<dynamic> weather7Days(location) async {
+    var response = await ZKNetworkManager()
+        .doGet('$qweatherBaseUrl/v7/weather/7d', queryParameters: {
+      "key": qweather_apikey,
+      "location": location,
+      "lang": Intl.getCurrentLocale().substring(0, 2),
+    });
+    return response.data;
+  }
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:zk_weather/utils/extensions/color_extensions.dart';
 
 class ZKAppTheme {
-  static const double smallFontSize = 16;
-  static const double normalFontsize = 22;
-  static const double largeFontsize = 24;
+  static double smallFontSize = 16;
+  static double normalFontsize = 22;
+  static double largeFontsize = 24;
 
   static const Color lightTextColor = Colors.black;
   static const Color dartTextColor = Colors.white;
@@ -16,8 +16,8 @@ class ZKAppTheme {
   static const Color lightBackgroundColor = Colors.white;
   static const Color dartBackgroundColor = Colors.black;
 
-  static const TextStyle smallTextStyle = TextStyle(fontSize: smallFontSize);
-  static const TextStyle largeTextStyle = TextStyle(fontSize: largeFontsize);
+  static TextStyle smallTextStyle = TextStyle(fontSize: smallFontSize);
+  static TextStyle largeTextStyle = TextStyle(fontSize: largeFontsize);
 
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
@@ -32,7 +32,7 @@ class ZKAppTheme {
       //unselectedLabelStyle: TextStyle(fontSize: 30)
       //selectedLabelStyle: TextStyle(color: primarySwatch),//无作用
     ),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       bodyMedium: TextStyle(fontSize: normalFontsize, color: lightTextColor),
       bodyLarge: TextStyle(fontSize: largeFontsize, color: lightTextColor),
       bodySmall: TextStyle(fontSize: smallFontSize, color: lightTextColor),
@@ -48,7 +48,7 @@ class ZKAppTheme {
       unselectedItemColor: dartTextColor,
       selectedItemColor: primarySwatch,
     ),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       bodyMedium: TextStyle(fontSize: normalFontsize, color: dartTextColor),
       bodyLarge: TextStyle(fontSize: largeFontsize, color: dartTextColor),
       bodySmall: TextStyle(fontSize: smallFontSize, color: dartTextColor),

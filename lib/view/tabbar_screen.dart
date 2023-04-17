@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
@@ -31,7 +32,7 @@ class _TapBarScreenState extends State<TapBarScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TopcityBloc()..add(TopcityLoadEvent()),
+      create: (context) => TopcityBloc(), //..add(TopcityLoadEvent()),
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.tabItemConf[_index]["label"] as String? ?? ""),
@@ -47,7 +48,7 @@ class _TapBarScreenState extends State<TapBarScreen> {
               child: Text(S.current.notifications),
             ),
             Center(
-              child: Text(S.current.library),
+              child: LineChart(LineChartData(backgroundColor: Colors.red)),
             ),
           ],
         ),

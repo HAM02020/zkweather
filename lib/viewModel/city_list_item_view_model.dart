@@ -1,5 +1,5 @@
 import 'package:zk_weather/generated/l10n.dart';
-import 'package:zk_weather/model/top_citys/top_city.dart';
+import 'package:zk_weather/model/top_citys/top_citys.dart';
 import 'package:zk_weather/model/weather_now/weather.dart';
 import 'package:zk_weather/model/weather_now/weather_now_model.dart';
 

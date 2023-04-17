@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:zk_weather/model/top_citys/top_citys_model.dart';
+import 'package:zk_weather/model/top_citys/top_citys.dart';
 import 'package:zk_weather/utils/network/api.dart';
 
 part 'topcity_event.dart';
