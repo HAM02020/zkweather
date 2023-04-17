@@ -5,7 +5,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
-import 'package:zk_weather/common/global.dart';
 import 'package:zk_weather/generated/l10n.dart';
 import 'package:zk_weather/model/top_citys/top_city.dart';
 import 'package:zk_weather/model/weather_now/weather_now_model.dart';

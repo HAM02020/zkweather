@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zk_weather/bloc/city_weather/city_weather_bloc.dart';
 import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
-import 'package:zk_weather/screens/weather/detail/weather_detail_screen.dart';
-import 'package:zk_weather/widgets/city_weather_list_item.dart';
+import 'package:zk_weather/view/weather/detail/weather_detail_screen.dart';
+import 'package:zk_weather/view/widgets/city_weather_list_item.dart';
 
 class CitysScreen extends StatelessWidget {
   const CitysScreen({super.key});

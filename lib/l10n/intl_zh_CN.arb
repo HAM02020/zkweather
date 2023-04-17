@@ -1,6 +1,9 @@
 {
     "title":"zk天气",
     "home":"主页",
+    "search":"搜索",
+    "notifications":"消息中心",
+    "library":"目录",
     "message":"信息",
     "person":"我的",
     "beijing":"北京",

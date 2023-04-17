@@ -1,6 +1,9 @@
 {
     "title":"zkweather",
     "home":"home",
+    "search":"search",
+    "notifications":"notifications",
+    "library":"library",
     "message":"message",
     "person":"person",
     "beijing":"Beijing",

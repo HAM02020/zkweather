@@ -9,7 +9,10 @@ class ZKAppTheme {
   static const Color lightTextColor = Colors.black;
   static const Color dartTextColor = Colors.white;
 
-  static const Color primarySwatch = Colors.pinkAccent;
+  static const Color lightIconColor = Colors.black;
+  static const Color dartIconColor = Colors.white;
+
+  static const Color primarySwatch = Colors.cyanAccent;
   static const Color lightBackgroundColor = Colors.white;
   static const Color dartBackgroundColor = Colors.black;
 

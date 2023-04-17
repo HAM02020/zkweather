@@ -29,9 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "hangzhou": MessageLookupByLibrary.simpleMessage("Hangzhou"),
         "high": MessageLookupByLibrary.simpleMessage("H:"),
         "home": MessageLookupByLibrary.simpleMessage("home"),
+        "library": MessageLookupByLibrary.simpleMessage("library"),
         "low": MessageLookupByLibrary.simpleMessage("L:"),
         "message": MessageLookupByLibrary.simpleMessage("message"),
+        "notifications": MessageLookupByLibrary.simpleMessage("notifications"),
         "person": MessageLookupByLibrary.simpleMessage("person"),
+        "search": MessageLookupByLibrary.simpleMessage("search"),
         "shanghai": MessageLookupByLibrary.simpleMessage("Shanghai"),
         "title": MessageLookupByLibrary.simpleMessage("zkweather"),
         "word_city": MessageLookupByLibrary.simpleMessage("")

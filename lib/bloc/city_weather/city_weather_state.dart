@@ -4,6 +4,7 @@ part of 'city_weather_bloc.dart';
 class CityWeatherState extends Equatable {
   List<CityListItemViewModel> list = [];
 
+  @override
   List<Object?> get props => [list];
 }
 
@@ -22,7 +23,4 @@ class CityWeatherLoadingEndState extends CityWeatherState {
   late List<CityListItemViewModel> list;
 
   CityWeatherLoadingEndState({required this.list});
-
-  @override
-  List<Object?> get props => super.props;
 }

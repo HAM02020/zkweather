@@ -3,8 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:zk_weather/common/zk_theme.dart';
 import 'package:zk_weather/generated/l10n.dart';
-import 'package:zk_weather/screens/tabbar_screen.dart';
-import 'package:zk_weather/screens/weather/detail/weather_detail_screen.dart';
+import 'package:zk_weather/view/tabbar_screen.dart';
+import 'package:zk_weather/view/weather/detail/weather_detail_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           background: Container(color: const Color(0xFFF5F5F5))),
       theme: ZKAppTheme.lightTheme,
       darkTheme: ZKAppTheme.darkTheme,
-      initialRoute: "/",
+      initialRoute: "detail",
       routes: {
         "/": (context) => TapBarScreen(),
         "detail": (context) => const WeatherDetailScreen()

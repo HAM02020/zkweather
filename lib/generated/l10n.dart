@@ -70,6 +70,36 @@ class S {
     );
   }
 
+  /// `search`
+  String get search {
+    return Intl.message(
+      'search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `notifications`
+  String get notifications {
+    return Intl.message(
+      'notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `library`
+  String get library {
+    return Intl.message(
+      'library',
+      name: 'library',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `message`
   String get message {
     return Intl.message(
