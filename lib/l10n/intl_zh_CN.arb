@@ -1,6 +1,21 @@
 {
     "title":"zk天气",
     "home":"主页",
+    "search":"搜索",
+    "notifications":"消息中心",
+    "library":"目录",
     "message":"信息",
-    "person":"我的"
+    "person":"我的",
+    "beijing":"北京",
+    "shanghai":"上海",
+    "dalian":"大连",
+    "chongqing":"重庆",
+    "hangzhou":"广州",
+    "guangzhou":"大连",
+    "word_city":"市",
+    "high":"最高",
+    "low":"最低",
+
+
+    "windScale":"级"
 }

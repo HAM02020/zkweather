@@ -70,6 +70,36 @@ class S {
     );
   }
 
+  /// `search`
+  String get search {
+    return Intl.message(
+      'search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `notifications`
+  String get notifications {
+    return Intl.message(
+      'notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `library`
+  String get library {
+    return Intl.message(
+      'library',
+      name: 'library',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `message`
   String get message {
     return Intl.message(
@@ -85,6 +115,106 @@ class S {
     return Intl.message(
       'person',
       name: 'person',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Beijing`
+  String get beijing {
+    return Intl.message(
+      'Beijing',
+      name: 'beijing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shanghai`
+  String get shanghai {
+    return Intl.message(
+      'Shanghai',
+      name: 'shanghai',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dalian`
+  String get dalian {
+    return Intl.message(
+      'Dalian',
+      name: 'dalian',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chongqing`
+  String get chongqing {
+    return Intl.message(
+      'Chongqing',
+      name: 'chongqing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hangzhou`
+  String get hangzhou {
+    return Intl.message(
+      'Hangzhou',
+      name: 'hangzhou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guangzhou`
+  String get guangzhou {
+    return Intl.message(
+      'Guangzhou',
+      name: 'guangzhou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get word_city {
+    return Intl.message(
+      '',
+      name: 'word_city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `H:`
+  String get high {
+    return Intl.message(
+      'H:',
+      name: 'high',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `L:`
+  String get low {
+    return Intl.message(
+      'L:',
+      name: 'low',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get windScale {
+    return Intl.message(
+      '',
+      name: 'windScale',
       desc: '',
       args: [],
     );

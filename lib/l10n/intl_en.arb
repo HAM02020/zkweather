@@ -1,6 +1,22 @@
 {
     "title":"zkweather",
     "home":"home",
+    "search":"search",
+    "notifications":"notifications",
+    "library":"library",
     "message":"message",
-    "person":"person"
+    "person":"person",
+    "beijing":"Beijing",
+    "shanghai":"Shanghai",
+    "dalian":"Dalian",
+    "chongqing":"Chongqing",
+    "hangzhou":"Hangzhou",
+    "guangzhou":"Guangzhou",
+    "word_city":"",
+    "high":"H:",
+    "low":"L:",
+
+
+    "windScale":""
+
 }

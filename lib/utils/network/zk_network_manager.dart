@@ -25,7 +25,8 @@ class ZKNetworkManager extends DioForNative {
     interceptors.add(ZKInterceptor());
   }
 
-  doGet<T>(url, {queryParameters, options, cancelToken, onReceiveProgress}) {
+  Future<Response<T>> doGet<T>(url,
+      {queryParameters, options, cancelToken, onReceiveProgress}) {
     return get<T>(
       url,
       queryParameters: queryParameters,
@@ -64,12 +65,14 @@ class ZKInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     //添加headers 设置contentType等
     debugPrint(
-        "dioRequest:${options.method} url->${options.baseUrl}${options.queryParameters}");
+        "dioRequest:${options.method} url->${options.uri}${options.queryParameters}");
     return handler.next(options);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
+    debugPrint("dioResponse:${response}");
+
     return handler.resolve(response);
   }
 }

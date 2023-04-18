@@ -1,46 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:provider/provider.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zk_weather/common/routes.dart';
 import 'package:zk_weather/common/zk_theme.dart';
 import 'package:zk_weather/generated/l10n.dart';
-import 'package:zk_weather/screens/tabbar_page.dart';
-import 'package:zk_weather/states/my_change_notifier.dart';
 
-void main() {
+void main() async {
+  await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => MyChangeNotifier(),
-      child: MaterialApp(
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          S.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        builder: (context, child) => ResponsiveWrapper.builder(child,
-            maxWidth: 1200,
-            minWidth: 480,
-            defaultScale: true,
-            breakpoints: const [
-              ResponsiveBreakpoint.resize(480, name: MOBILE),
-              ResponsiveBreakpoint.autoScale(800, name: TABLET),
-              ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-              ResponsiveBreakpoint.autoScale(2460, name: '4K'),
-            ],
-            background: Container(color: const Color(0xFFF5F5F5))),
-        theme: ZKAppTheme.lightTheme,
-        darkTheme: ZKAppTheme.darkTheme,
-        initialRoute: "/",
-        routes: {"/": (context) => TapBarPage()},
+    return MaterialApp(
+      builder: EasyLoading.init(
+        builder: (context, child) {
+          ScreenUtil.init(context);
+          return child!;
+        },
       ),
+      onGenerateRoute: onGenerateRoute,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        S.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      theme: ZKAppTheme.lightTheme,
+      darkTheme: ZKAppTheme.darkTheme,
     );
   }
 }

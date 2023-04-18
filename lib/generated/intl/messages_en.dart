@@ -22,9 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "beijing": MessageLookupByLibrary.simpleMessage("Beijing"),
+        "chongqing": MessageLookupByLibrary.simpleMessage("Chongqing"),
+        "dalian": MessageLookupByLibrary.simpleMessage("Dalian"),
+        "guangzhou": MessageLookupByLibrary.simpleMessage("Guangzhou"),
+        "hangzhou": MessageLookupByLibrary.simpleMessage("Hangzhou"),
+        "high": MessageLookupByLibrary.simpleMessage("H:"),
         "home": MessageLookupByLibrary.simpleMessage("home"),
+        "library": MessageLookupByLibrary.simpleMessage("library"),
+        "low": MessageLookupByLibrary.simpleMessage("L:"),
         "message": MessageLookupByLibrary.simpleMessage("message"),
+        "notifications": MessageLookupByLibrary.simpleMessage("notifications"),
         "person": MessageLookupByLibrary.simpleMessage("person"),
-        "title": MessageLookupByLibrary.simpleMessage("zkweather")
+        "search": MessageLookupByLibrary.simpleMessage("search"),
+        "shanghai": MessageLookupByLibrary.simpleMessage("Shanghai"),
+        "title": MessageLookupByLibrary.simpleMessage("zkweather"),
+        "windScale": MessageLookupByLibrary.simpleMessage(""),
+        "word_city": MessageLookupByLibrary.simpleMessage("")
       };
 }
