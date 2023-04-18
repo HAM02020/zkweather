@@ -14,6 +14,9 @@
     "guangzhou":"Guangzhou",
     "word_city":"",
     "high":"H:",
-    "low":"L:"
+    "low":"L:",
+
+
+    "windScale":""
 
 }

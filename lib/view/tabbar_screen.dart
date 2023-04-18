@@ -32,7 +32,7 @@ class _TapBarScreenState extends State<TapBarScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TopcityBloc(), //..add(TopcityLoadEvent()),
+      create: (context) => TopcityBloc()..add(TopcityLoadEvent()),
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.tabItemConf[_index]["label"] as String? ?? ""),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zk_weather/common/routes.dart';
 import 'package:zk_weather/common/zk_theme.dart';
 import 'package:zk_weather/generated/l10n.dart';
-import 'package:zk_weather/view/tabbar_screen.dart';
-import 'package:zk_weather/view/weather/detail/weather_detail_screen.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
@@ -13,13 +13,17 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: (context, child) {
-        ScreenUtil.init(context);
-        return WeatherDetailScreen();
-      },
+      builder: EasyLoading.init(
+        builder: (context, child) {
+          ScreenUtil.init(context);
+          return child!;
+        },
+      ),
+      onGenerateRoute: onGenerateRoute,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -29,11 +33,6 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       theme: ZKAppTheme.lightTheme,
       darkTheme: ZKAppTheme.darkTheme,
-      initialRoute: "detail",
-      routes: {
-        "/": (context) => TapBarScreen(),
-        "detail": (context) => WeatherDetailScreen()
-      },
     );
   }
 }

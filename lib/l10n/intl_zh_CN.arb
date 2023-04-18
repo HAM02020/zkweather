@@ -14,5 +14,8 @@
     "guangzhou":"大连",
     "word_city":"市",
     "high":"最高",
-    "low":"最低"
+    "low":"最低",
+
+
+    "windScale":"级"
 }

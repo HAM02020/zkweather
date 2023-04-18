@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:zk_weather/generated/l10n.dart';
 
 import 'package:zk_weather/model/weather7_days/weather7_days.dart';
 import 'package:zk_weather/model/weather_detail/weather_detail.dart';
@@ -19,52 +22,81 @@ class WeatherDetialViewModel {
     [152, '少云', 0, 1],
     [153, '晴间多云', 0, 0],
   ];
-  List<String>? dateList;
+  String? cityName;
+  String? temp;
+  String? text;
+  Widget? bigPic;
+  Map<String, String> dateMap = {};
   List<WeatherDetailItemViewModel>? detailItemList;
-  List<Weather7DaysItemViewModel>? weather7Daylist;
+  List<Weather7DaysItemViewModel>? weather7DayItemlist;
   List<double>? tempMaxList;
   List<double>? tempMinList;
 
   WeatherDetialViewModel._init();
-  static FutureOr<WeatherDetialViewModel> load(location) async {
+  static FutureOr<WeatherDetialViewModel> load({cityName, location}) async {
     WeatherDetialViewModel vm = WeatherDetialViewModel._init();
+    vm.cityName = cityName;
 
     var jsonDetail = await Api.weatherDetail(location);
     var json7Days = await Api.weather7Days(location);
     var wdm = WeatherDetail.fromJson(jsonDetail);
     var w7m = Weather7Days.fromJson(json7Days);
+    vm.temp = wdm.now?.temp;
+    vm.text = wdm.now?.text;
+    w7m.daily?.forEach((e) {
+      var date = e.fxDate?.substring(5) ?? "";
+      var weekday = parseWeekDay(
+          DateTime.parse(e.fxDate ?? DateTime.now().toString()).weekday);
+      vm.dateMap[date] = weekday;
+    });
 
-    vm.dateList =
-        w7m.daily?.map((e) => e.fxDate?.substring(5)).cast<String>().toList();
     vm.detailItemList = [
       WeatherDetailItemViewModel(
-          iconPath: "",
+          iconPath: "asset/icons/fengsu.svg",
           name: "${wdm.now?.windScale}级",
           tip: "${wdm.now?.windDir}"),
       WeatherDetailItemViewModel(
-          iconPath: "", name: "${wdm.now?.humidity}%", tip: "湿度"),
+          iconPath: "asset/icons/ziyuan.svg",
+          name: "${wdm.now?.humidity}%",
+          tip: "湿度"),
       WeatherDetailItemViewModel(
-          iconPath: "", name: "${wdm.now?.feelsLike}°", tip: "体感温度"),
+          iconPath: "asset/icons/kongqiwendu.svg",
+          name: "${wdm.now?.feelsLike}°",
+          tip: "体感温度"),
       WeatherDetailItemViewModel(
-          iconPath: "", name: "${wdm.now?.pressure}hPa", tip: "气压"),
+          iconPath: "asset/icons/qiya.svg",
+          name: "${wdm.now?.pressure}hPa",
+          tip: "气压"),
       WeatherDetailItemViewModel(
-          iconPath: "", name: "${wdm.now?.vis}km", tip: "能见度"),
+          iconPath: "asset/icons/yanjing.svg",
+          name: "${wdm.now?.vis}km",
+          tip: "能见度"),
       WeatherDetailItemViewModel(
-          iconPath: "", name: "${wdm.now?.cloud}", tip: "云量"),
+          iconPath: "asset/icons/yun.svg",
+          name: "${wdm.now?.cloud}",
+          tip: "云量"),
     ];
-    vm.weather7Daylist = w7m.daily?.map((e) {
+    vm.weather7DayItemlist = w7m.daily?.map((e) {
       return Weather7DaysItemViewModel(
           dayInWeek: parseWeekDay(
               DateTime.parse(e.fxDate ?? DateTime.now().toString()).weekday),
           date: e.fxDate?.substring(5),
           textDay: e.textDay,
           textNight: e.textNight,
-          windDir: e.windDirDay,
+          windDir: "${e.windDirDay}${e.windScaleDay}${S.current.windScale}",
           imgDay: findImgByIconNum(e.iconDay),
           imgNight: findImgByIconNum(e.iconNight),
-          tempMax: e.tempMax,
-          tempMin: e.tempMax);
+          tempMax: "${e.tempMax}°",
+          tempMin: "${e.tempMin}°");
     }).toList();
+    vm.tempMaxList = w7m.daily
+        ?.map((e) => double.parse(e.tempMax ?? '0'))
+        .cast<double>()
+        .toList();
+    vm.tempMinList = w7m.daily
+        ?.map((e) => double.parse(e.tempMin ?? '0'))
+        .cast<double>()
+        .toList();
     return vm;
   }
 
@@ -74,7 +106,10 @@ class WeatherDetialViewModel {
   }
 
   static findImgByIconNum(String? iconNum) {
-    return Image.asset("asset/qweather/$iconNum.svg");
+    return SvgPicture.asset(
+      "asset/qweather/$iconNum.svg",
+      width: 22.r,
+    );
   }
 }
 
@@ -90,8 +125,8 @@ class Weather7DaysItemViewModel {
   String? date;
   String? textDay;
   String? textNight;
-  Image? imgDay;
-  Image? imgNight;
+  Widget? imgDay;
+  Widget? imgNight;
   String? windDir;
 
   String? tempMax;

@@ -209,6 +209,16 @@ class S {
       args: [],
     );
   }
+
+  /// ``
+  String get windScale {
+    return Intl.message(
+      '',
+      name: 'windScale',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

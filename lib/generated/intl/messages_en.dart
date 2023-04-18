@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("search"),
         "shanghai": MessageLookupByLibrary.simpleMessage("Shanghai"),
         "title": MessageLookupByLibrary.simpleMessage("zkweather"),
+        "windScale": MessageLookupByLibrary.simpleMessage(""),
         "word_city": MessageLookupByLibrary.simpleMessage("")
       };
 }

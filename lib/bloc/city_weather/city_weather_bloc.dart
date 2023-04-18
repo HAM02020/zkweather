@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:meta/meta.dart';
 import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
 import 'package:zk_weather/model/top_citys/top_citys.dart';
@@ -41,6 +42,7 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
     if (topcityState is TopcityLoadedState) {
       emit(CityWeatherLoadingState());
       emit(CityWeatherInitialState());
+      EasyLoading.show();
       for (TopCityModel e in topcityState.model?.topCityList ?? []) {
         var json = await Api.cityWeather(lon: e.lon, lat: e.lat);
         WeatherNowModel weatherNowModel = WeatherNowModel.fromJson(json);
@@ -49,6 +51,7 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
         state.list.add(viewModel);
       }
       emit(CityWeatherLoadingEndState(list: state.list));
+      EasyLoading.dismiss();
     }
   }
 

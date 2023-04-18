@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zk_weather/bloc/city_weather/city_weather_bloc.dart';
 import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
+import 'package:zk_weather/bloc/weather_detail/weather_detail_bloc.dart';
+import 'package:zk_weather/generated/l10n.dart';
 import 'package:zk_weather/view/weather/detail/weather_detail_screen.dart';
 import 'package:zk_weather/view/widgets/city_weather_list_item.dart';
 
@@ -16,14 +18,24 @@ class CitysScreen extends StatelessWidget {
           CityWeatherBloc(topcityBloc: BlocProvider.of<TopcityBloc>(context)),
       child: BlocBuilder<CityWeatherBloc, CityWeatherState>(
         builder: (context, state) {
+          var topCityList =
+              BlocProvider.of<TopcityBloc>(context).state.model?.topCityList;
           return ListView.builder(
             itemCount: state.list.length,
-            itemBuilder: (context, index) => GestureDetector(
+            itemBuilder: (context, index) => InkWell(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => WeatherDetailScreen()),
+                      builder: (context) => BlocProvider(
+                            create: (context) => WeatherDetailBloc()
+                              ..add(WeatherDetailShouldLoadEvent(
+                                  name: state.list[index].cityName ??
+                                      S.current.beijing,
+                                  location:
+                                      "${topCityList?[index].lon},${topCityList?[index].lat}")),
+                            child: WeatherDetailScreen(),
+                          )),
                 );
               },
               child: CityWeatherListItem(
