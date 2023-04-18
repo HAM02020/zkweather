@@ -1,8 +1,9 @@
 part of 'weather_detail_bloc.dart';
 
 abstract class WeatherDetailState extends Equatable {
+  late int index;
   WeatherDetialViewModel? vm;
-  WeatherDetailState({this.vm});
+  WeatherDetailState({this.vm, this.index = 0});
 
   @override
   List<Object> get props => [];
@@ -17,5 +18,5 @@ class WeatherDetailLoadingState extends WeatherDetailState {
 }
 
 class WeatherDetailDidLoadState extends WeatherDetailState {
-  WeatherDetailDidLoadState({super.vm});
+  WeatherDetailDidLoadState({super.vm, required super.index});
 }

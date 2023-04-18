@@ -27,9 +27,12 @@ class CitysScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BlocProvider(
-                            create: (context) => WeatherDetailBloc()
+                      builder: (mctx) => BlocProvider(
+                            create: (ctx) => WeatherDetailBloc(
+                                cityWeatherBloc:
+                                    BlocProvider.of<CityWeatherBloc>(context))
                               ..add(WeatherDetailShouldLoadEvent(
+                                  index: index,
                                   name: state.list[index].cityName ??
                                       S.current.beijing,
                                   location:

@@ -38,14 +38,15 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  dio: ^5.1.1
-  pull_to_refresh: ^2.0.0
-  flutter_bloc: ^8.1.2
-  equatable: ^2.0.5
-  fl_chart: ^0.62.0
-  flutter_screenutil: ^5.7.0
-  flutter_svg: ^2.0.5
-  flutter_easyloading: ^3.0.5
+  dio: ^5.1.1 # 网络请求库
+  pull_to_refresh: ^2.0.0 # 下拉刷新库
+  flutter_bloc: ^8.1.2 # 状态管理库
+  equatable: ^2.0.5 # 对象比较库
+  fl_chart: ^0.62.0 # 图表库
+  flutter_screenutil: ^5.7.0 # 屏幕UI适应库
+  flutter_svg: ^2.0.5 # 显示svg图标库
+  flutter_easyloading: ^3.0.5 # loading hud库
+  scrollable_positioned_list: ^0.3.5 # 滚动定位list
   
 
 

@@ -11,6 +11,7 @@ import 'package:zk_weather/model/top_citys/top_citys.dart';
 import 'package:zk_weather/model/weather_now/weather_now_model.dart';
 import 'package:zk_weather/utils/network/api.dart';
 import 'package:zk_weather/viewModel/city_list_item_view_model.dart';
+import 'package:zk_weather/viewModel/weather_detail_view_model.dart';
 
 part 'city_weather_event.dart';
 part 'city_weather_state.dart';
@@ -21,7 +22,8 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
   CityWeatherBloc({required this.topcityBloc})
       : super(CityWeatherInitialState()) {
     _topcityBlocSubscription = topcityBloc.stream.listen(_onTopcityBlocStream);
-    on<CityWeatherLoadEvent>(_onCityWeatherLoad);
+    on<CityWeatherWillLoadEvent>(_onCityWeatherLoad);
+    on<CityWeatherShouldAddVMEvent>(_oncityWeatherShouldAddVM);
   }
 
   FutureOr<void> _onCityWeatherLoad(
@@ -35,7 +37,7 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
           weatherNowModel: weatherNowModel, topCityModel: e);
       state.list.add(viewModel);
     }
-    emit(CityWeatherLoadingEndState(list: state.list));
+    emit(CityWeatherDidLoadState(list: state.list, vmList: []));
   }
 
   void _onTopcityBlocStream(topcityState) async {
@@ -50,9 +52,23 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
             weatherNowModel: weatherNowModel, topCityModel: e);
         state.list.add(viewModel);
       }
-      emit(CityWeatherLoadingEndState(list: state.list));
+      emit(CityWeatherDidLoadState(list: state.list, vmList: []));
       EasyLoading.dismiss();
     }
+  }
+
+  FutureOr<void> _oncityWeatherShouldAddVM(
+      CityWeatherShouldAddVMEvent event, Emitter<CityWeatherState> emit) async {
+    CityWeatherDidLoadState s = state as CityWeatherDidLoadState;
+    var vm = event.vm;
+    var index = event.index;
+    var idx = (event.index + 1) > s.vmList.length
+        ? (event.index + 1)
+        : s.vmList.length;
+    s.vmList.length = idx;
+    s.vmList.insert(event.index, event.vm);
+
+    emit(CityWeatherDidLoadState(list: s.list, vmList: s.vmList));
   }
 
   @override
