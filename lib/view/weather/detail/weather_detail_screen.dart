@@ -5,6 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:zk_weather/bloc/top_city/topcity_bloc.dart';
 import 'package:zk_weather/bloc/weather_detail/weather_detail_bloc.dart';
 import 'package:zk_weather/common/zk_theme.dart';
 import 'package:zk_weather/viewModel/weather_detail_view_model.dart';
@@ -24,15 +25,21 @@ class WeatherDetailScreen extends StatefulWidget {
 class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
   final screenWidth = ScreenUtil().screenWidth;
 
-  late int _curIndex = widget.initialPage;
+  late int _curIndex;
 
   @override
   void initState() {
+    _curIndex = widget.initialPage;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    late final ItemScrollController itemScrollController =
+        ItemScrollController();
+
+    late final ItemPositionsListener itemPositionsListener =
+        ItemPositionsListener.create();
     const radius = Radius.circular(30);
 
     return BlocConsumer<WeatherDetailBloc, WeatherDetailState>(
@@ -48,32 +55,66 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
         }
       },
       builder: (context, state) {
-        WeatherDetialViewModel? vm = state.vm;
+        WeatherDetialViewModel? vm = state.vmMap?[_curIndex];
         return Scaffold(
             backgroundColor: const Color(0xff98AFDF),
-            body: PageView.builder(
-              onPageChanged: (idx) => updateIndex(idx),
-              controller: widget.pageController,
-              scrollDirection: Axis.horizontal,
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                return getSinglePage(radius, vm);
-              },
+            body: Column(
+              children: [
+                SafeArea(
+                  child: SizedBox(
+                    height: 65.h,
+                    child: ScrollablePositionedList.builder(
+                      itemScrollController: itemScrollController,
+                      itemPositionsListener: itemPositionsListener,
+                      itemCount: BlocProvider.of<WeatherDetailBloc>(context)
+                              .topcityBloc
+                              .state
+                              .model
+                              ?.topCityList
+                              ?.length ??
+                          0,
+                      itemBuilder: (context, index) {
+                        var topCityState =
+                            BlocProvider.of<WeatherDetailBloc>(context)
+                                .topcityBloc
+                                .state;
+                        return getdayCell(
+                          index: index,
+                          date: topCityState.model?.topCityList?[index].name,
+                          dayInWeek:
+                              topCityState.model?.topCityList?[index].adm1,
+                        );
+                      },
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: PageView.builder(
+                    onPageChanged: (idx) {
+                      BlocProvider.of<WeatherDetailBloc>(context)
+                          .add(WeatherDetailShouldLoadEvent(index: idx));
+                      updateIndex(idx);
+                    },
+                    controller: widget.pageController,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 6,
+                    itemBuilder: (context, index) {
+                      return getSinglePage(radius, vm);
+                    },
+                  ),
+                ),
+              ],
             ));
       },
     );
   }
 
   Widget getSinglePage(Radius radius, WeatherDetialViewModel? vm) {
-    late final ItemScrollController itemScrollController =
-        ItemScrollController();
-
-    late final ItemPositionsListener itemPositionsListener =
-        ItemPositionsListener.create();
     return SingleChildScrollView(
         child: Stack(children: [
       Padding(
-        padding: EdgeInsets.only(top: 200.h),
+        padding: EdgeInsets.only(top: 100.h),
         child: ClipRRect(
             borderRadius: BorderRadius.only(topLeft: radius, topRight: radius),
             child: Container(
@@ -96,9 +137,6 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 50.r,
-          ),
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
@@ -111,22 +149,6 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
           ),
           SizedBox(
             height: 30.r,
-          ),
-          SizedBox(
-            height: 65.h,
-            child: ScrollablePositionedList.builder(
-              itemScrollController: itemScrollController,
-              itemPositionsListener: itemPositionsListener,
-              itemCount: vm?.dateMap.keys.length ?? 0,
-              itemBuilder: (context, index) {
-                return getdayCell(
-                  index: index,
-                  date: vm?.dateMap.keys.toList()[index],
-                  dayInWeek: vm?.dateMap.values.toList()[index],
-                );
-              },
-              scrollDirection: Axis.horizontal,
-            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -267,9 +289,12 @@ class _WeatherDetailScreenState extends State<WeatherDetailScreen> {
     return InkWell(
       onTap: () {
         //itemScrollController.jumpTo(index: index);
+        BlocProvider.of<WeatherDetailBloc>(context)
+            .add(WeatherDetailShouldLoadEvent(index: index));
         updateIndex(index);
         widget.pageController.animateToPage(index,
-            duration: const Duration(milliseconds: 800), curve: Curves.ease);
+            duration: Duration(milliseconds: 500), curve: Curves.linear);
+        //widget.pageController.jumpToPage(index);
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 10),

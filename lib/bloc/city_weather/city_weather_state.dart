@@ -21,7 +21,6 @@ class CityWeatherLoadingState extends CityWeatherState {
 class CityWeatherDidLoadState extends CityWeatherState {
   @override
   late List<CityListItemViewModel> list;
-  late List<WeatherDetialViewModel> vmList = [];
 
-  CityWeatherDidLoadState({required this.list, required this.vmList});
+  CityWeatherDidLoadState({required this.list});
 }

@@ -8,11 +8,8 @@ abstract class WeatherDetailEvent extends Equatable {
 }
 
 class WeatherDetailShouldLoadEvent extends WeatherDetailEvent {
-  String name;
-  String location;
   late int index;
-  WeatherDetailShouldLoadEvent(
-      {required this.name, required this.location, required this.index});
+  WeatherDetailShouldLoadEvent({required this.index});
 }
 
 class WeatherDetailDidLoadEvent extends WeatherDetailEvent {}

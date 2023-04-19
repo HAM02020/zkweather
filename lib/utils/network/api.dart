@@ -15,7 +15,7 @@ class Api {
         .doGet('$qgeoWeatherBaseUrl/v2/city/top', queryParameters: {
       "key": qweather_apikey,
       "range": 'cn',
-      "number": 5,
+      "number": 6,
       "lang": Intl.getCurrentLocale().substring(0, 2),
     });
     return response.data;

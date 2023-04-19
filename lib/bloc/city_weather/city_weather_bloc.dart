@@ -37,7 +37,7 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
           weatherNowModel: weatherNowModel, topCityModel: e);
       state.list.add(viewModel);
     }
-    emit(CityWeatherDidLoadState(list: state.list, vmList: []));
+    emit(CityWeatherDidLoadState(list: state.list));
   }
 
   void _onTopcityBlocStream(topcityState) async {
@@ -52,7 +52,9 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
             weatherNowModel: weatherNowModel, topCityModel: e);
         state.list.add(viewModel);
       }
-      emit(CityWeatherDidLoadState(list: state.list, vmList: []));
+      emit(CityWeatherDidLoadState(
+        list: state.list,
+      ));
       EasyLoading.dismiss();
     }
   }
@@ -60,15 +62,6 @@ class CityWeatherBloc extends Bloc<CityWeatherEvent, CityWeatherState> {
   FutureOr<void> _oncityWeatherShouldAddVM(
       CityWeatherShouldAddVMEvent event, Emitter<CityWeatherState> emit) async {
     CityWeatherDidLoadState s = state as CityWeatherDidLoadState;
-    var vm = event.vm;
-    var index = event.index;
-    var idx = (event.index + 1) > s.vmList.length
-        ? (event.index + 1)
-        : s.vmList.length;
-    s.vmList.length = idx;
-    s.vmList.insert(event.index, event.vm);
-
-    emit(CityWeatherDidLoadState(list: s.list, vmList: s.vmList));
   }
 
   @override

@@ -18,8 +18,7 @@ class CitysScreen extends StatelessWidget {
           CityWeatherBloc(topcityBloc: BlocProvider.of<TopcityBloc>(context)),
       child: BlocBuilder<CityWeatherBloc, CityWeatherState>(
         builder: (context, state) {
-          var topCityList =
-              BlocProvider.of<TopcityBloc>(context).state.model?.topCityList;
+          var topCityBloc = BlocProvider.of<TopcityBloc>(context);
           return ListView.builder(
             itemCount: state.list.length,
             itemBuilder: (context, index) => InkWell(
@@ -29,15 +28,15 @@ class CitysScreen extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (mctx) => BlocProvider(
                             create: (ctx) => WeatherDetailBloc(
+                                topcityBloc: topCityBloc,
                                 cityWeatherBloc:
                                     BlocProvider.of<CityWeatherBloc>(context))
                               ..add(WeatherDetailShouldLoadEvent(
-                                  index: index,
-                                  name: state.list[index].cityName ??
-                                      S.current.beijing,
-                                  location:
-                                      "${topCityList?[index].lon},${topCityList?[index].lat}")),
-                            child: WeatherDetailScreen(),
+                                index: index,
+                              )),
+                            child: WeatherDetailScreen(
+                              initialPage: index,
+                            ),
                           )),
                 );
               },
