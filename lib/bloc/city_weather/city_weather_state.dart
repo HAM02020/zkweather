@@ -18,9 +18,9 @@ class CityWeatherLoadingState extends CityWeatherState {
   List<Object?> get props => throw UnimplementedError();
 }
 
-class CityWeatherLoadingEndState extends CityWeatherState {
+class CityWeatherDidLoadState extends CityWeatherState {
   @override
   late List<CityListItemViewModel> list;
 
-  CityWeatherLoadingEndState({required this.list});
+  CityWeatherDidLoadState({required this.list});
 }
